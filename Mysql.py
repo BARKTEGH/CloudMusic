@@ -6,7 +6,7 @@ class Mysql(object):
 
     def __init__(self):
         try:
-            self.db = MySQLdb.connect('127.0.0.1','root','123456789zl','cloudmusic')
+            self.db = MySQLdb.connect('127.0.0.1','root','*******','cloudmusic')
             print '链接数据库test成功'
             self.cur = self.db.cursor()
         except MySQLdb.Error, e:
