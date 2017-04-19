@@ -41,8 +41,9 @@ class songlist(object):
 
     def creat_table(self):
         sql = 'SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_NAME="%s"' % self.listname.lower()
-        a = self.mysql.cur.execute(sql)
-        if a == 0:
+        self.mysql.cur.execute(sql)
+        b = self.mysql.cur.fetchone()[0]
+        if b == 0:
             print '创建表'
             sql2= 'CREATE TABLE' +self.listname.lower()+ 'LIKE billboard';
             self.mysql.cur.execute(sql2)
