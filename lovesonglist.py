@@ -21,6 +21,7 @@ class songlist(object):
 
     def get_lovasonglist(self):
         print time.ctime(),'开始爬取歌单'
+        self.creat_table()
         response = requests.get(self.URL,headers=headers).content
         soup= BeautifulSoup(response,'html.parser')
         textarea = soup.find('textarea').text
@@ -37,6 +38,16 @@ class songlist(object):
             artistID = str(music["artists"][0]["id"])
             self.save_list_to_mysql(songid,songURL,songName,albumName,artistName,artistID)
         return 0
+
+    def creat_table(self):
+        sql = 'SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_NAME="%s"' % self.listname.lower()
+        a = self.mysql.cur.execute(sql)
+        if a == 0:
+            print '创建表'
+            sql2= 'CREATE TABLE' +self.listname.lower()+ 'LIKE billboard';
+            self.mysql.cur.execute(sql2)
+        else:
+            print self.listname,'表已经存在'
 
     def save_list_to_mysql(self,songid,songURL,songName,albumName,artistName,artistID):
         table = self.listname
@@ -55,7 +66,7 @@ class songlist(object):
 
 
 def main():
-    list = songlist('http://music.163.com/discover/toplist?id=60198')
+    list = songlist('http://music.163.com//discover/toplist?id=180106',listname='UK')
     list.get_lovasonglist()
 
 if __name__ == '__main__':
