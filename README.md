@@ -8,12 +8,10 @@
  
  <br>lovesonglist  用来获取歌单中每首歌的ID等等信息,并将每个歌单以表的形式存储下来.</br>
 <p> 
-database：
- cloudmusic：
-   table： music_items 存储每首歌的信息
-          musiccomment  存储每首歌的热评
+<br>database：cloudmusic</br>
+   <br>table： music_items 存储每首歌的信息</br>
+         <br> musiccomment  存储每首歌的热评息</br>
           
-          lovesonglist  存储 最喜爱的歌曲歌单 歌单模板都相同
-          billboard    billboard周榜
-          uk              uk周榜
-          </p>
+          <br>lovesonglist  存储 最喜爱的歌曲歌单 !歌单模板都相同息</br>
+          <br>billboard    billboard周榜息</br>
+          <br>uk              uk周榜息</br> </p>
